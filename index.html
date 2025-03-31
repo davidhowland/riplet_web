@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riplet - Your Private Location Journal</title>
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #ff006e;
+            --text-color: #333333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #212529;
+            --section-spacing: 100px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--light-bg);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .header-text {
+            flex: 1;
+            text-align: left;
+            min-width: 300px;
+        }
+        
+        .header-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 300px;
+        }
+        
+        .iphone-mockup {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            background-color: #1a1a1a;
+            border-radius: 40px;
+            padding: 14px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid #2a2a2a;
+            overflow: hidden;
+        }
+        
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        .signup-form {
+            margin-top: 1.5rem;
+            max-width: 400px;
+        }
+        
+        .signup-text {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .form-group {
+            display: flex;
+            margin-top: 0.5rem;
+        }
+        
+        .email-input {
+            flex-grow: 1;
+            padding: 0.6rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        
+        .email-input:focus {
+            border-color: var(--primary-color);
+        }
+        
+        .subscribe-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .split-section {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .split-section > div {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .app-screenshot {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .privacy-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .split-section {
+                flex-direction: column;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .header-text {
+                text-align: center;
+                padding: 0 1rem;
+            }
+            
+            .logo {
+                margin: 0 auto 1rem auto;
+            }
+            
+            .signup-form {
+                margin: 1.5rem auto 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                                    <div class="header-text">
+                    <div class="logo">R</div>
+                    <h1>Riplet</h1>
+                    <p class="tagline">Your personal location journal, built with privacy in mind</p>
+                    <a href="#" class="cta-button">Coming Soon to iOS</a>
+                    
+                    <div class="signup-form">
+                        <p class="signup-text">Get notified when we launch</p>
+                        <!-- Mailchimp Signup Form -->
+                        <form action="https://yourwebsite.us1.list-manage.com/subscribe/post?u=XXXXXXXXXX&amp;id=XXXXXXXXXX" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                            <div class="form-group">
+                                <input type="email" name="EMAIL" class="email-input" id="mce-EMAIL" placeholder="Your email address" required>
+                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                    <input type="text" name="b_XXXXXXXXXX_XXXXXXXXXX" tabindex="-1" value="">
+                                </div>
+                                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="subscribe-button">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="header-image">
+                    <div class="iphone-mockup">
+                        <img src="/api/placeholder/300/600" alt="Riplet app on iPhone 16" class="iphone-screen" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section id="privacy">
+        <div class="container">
+            <h2>Your Data Stays With You</h2>
+            <div class="split-section">
+                <div>
+                    <div class="privacy-icon">🔒</div>
+                    <h3>Privacy-First Approach</h3>
+                    <p>Riplet stores all your location data locally on your device. Your personal travel history never leaves your control.</p>
+                    <p>Even when using iCloud sync, your data is stored in your private CloudKit database, accessible only with your Apple ID.</p>
+                    <p>No analytics, no tracking, no data sharing. Just your personal location journal, exactly as it should be.</p>
+                </div>
+                <div>
+                    <img src="/api/placeholder/400/320" alt="Privacy illustration" class="app-screenshot" />
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="features">
+        <div class="container">
+            <h2>Your Places, Your Way</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3 class="feature-title">Location Tracking</h3>
+                    <p>Record and categorize all your visited places with detailed information.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3 class="feature-title">Visit Logging</h3>
+                    <p>Keep notes and timestamps for each visit to build your location history.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3 class="feature-title">Map Visualization</h3>
+                    <p>See all your visited places on an interactive map with powerful filtering options.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Insightful Statistics</h3>
+                    <p>Discover patterns in your visitation history with intuitive statistics and insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Data Control</h3>
+                    <p>Import and export your data via CSV for complete ownership and portability.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3 class="feature-title">iCloud Sync</h3>
+                    <p>Seamlessly sync your data across all your Apple devices without sacrificing privacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="visualization">
+        <div class="container">
+            <h2>Visualize Your Journey</h2>
+            <div class="split-section">
+                <div>
+                    <img src="/api/placeholder/400/320" alt="Map visualization" class="app-screenshot" />
+                </div>
+                <div>
+                    <h3>See Your World In A New Way</h3>
+                    <p>Riplet transforms your location history into beautiful, interactive visualizations that help you understand your travel patterns.</p>
+                    <p>Filter locations by category, date range, and frequency to discover insights about your movement patterns. Identify your most-visited places and visualize how your habits change over time.</p>
+                    <p>With Apple Maps integration, you'll enjoy a smooth, familiar interface that makes exploring your personal location data both fun and informative.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="statistics">
+        <div class="container">
+            <h2>Understand Your Patterns</h2>
+            <div class="split-section">
+                <div>
+                    <h3>Your Data, Your Insights</h3>
+                    <p>Riplet's statistics feature helps you understand your location habits with intuitive metrics and visualizations.</p>
+                    <p>Discover your most frequent locations, analyze visitation patterns over time, and gain insights into your travel habits—all while keeping your data completely private.</p>
+                    <p>The app's focus on data visualization makes finding patterns in your location history both easy and enjoyable.</p>
+                </div>
+                <div>
+                    <img src="/api/placeholder/400/320" alt="Statistics visualization" class="app-screenshot" />
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="getting-started">
+        <div class="container" style="text-align: center;">
+            <h2>Start Your Location Journal</h2>
+            <p>Riplet is currently in development, with plans to launch in the App Store soon.</p>
+            <a href="#" class="cta-button">Join the Waitlist</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Riplet App. All rights reserved.</p>
+            <p>Built with SwiftUI for iOS. Your data stays private.</p>
+        </div>
+    </footer>
+</body>
+</html>
