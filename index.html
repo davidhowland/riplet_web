@@ -239,6 +239,19 @@
         
         footer a {
             color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            margin: 0 0.5rem;
         }
         
         @media (max-width: 768px) {
@@ -411,8 +424,11 @@
     
     <footer>
         <div class="container">
-            <p>&copy; 2025 Riplet App. All rights reserved.</p>
-            <p>Built with SwiftUI for iOS. Your data stays private.</p>
+            <p>&copy; 2025 Frigid Light, LLC. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a> | 
+                <a href="#">Terms of Use</a>
+            </div>
         </div>
     </footer>
 </body>
