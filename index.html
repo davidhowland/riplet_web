@@ -254,6 +254,32 @@
             margin: 0 0.5rem;
         }
         
+        .site-nav {
+            background-color: var(--dark-bg);
+            padding: 0.75rem 0;
+        }
+        .site-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+        .nav-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        .nav-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -291,6 +317,13 @@
     </style>
 </head>
 <body>
+    <nav class="site-nav">
+        <div class="container">
+            <a href="index.html" class="nav-brand">Riplet</a>
+            <a href="support.html" class="nav-link">Support</a>
+        </div>
+    </nav>
+
     <header>
         <div class="container">
             <div class="header-content">
@@ -426,8 +459,9 @@
         <div class="container">
             <p>&copy; 2025 Frigid Light, LLC. All rights reserved.</p>
             <div class="footer-links">
-                <a href="privacy-policy.html">Privacy Policy</a> | 
-                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="privacy-policy.html">Privacy Policy</a> |
+                <a href="terms-of-service.html">Terms of Service</a> |
+                <a href="support.html">Support</a>
             </div>
         </div>
     </footer>
