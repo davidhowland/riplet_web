@@ -79,18 +79,12 @@ header {
     margin-bottom: 2rem;
 }
 
-.logo {
+.app-icon-logo {
     width: 60px;
     height: 60px;
-    background-color: var(--primary-color);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     margin: 0 auto 1rem auto;
-    color: white;
-    font-weight: bold;
-    font-size: 1.25rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
 }
 
 /* ============================================================
@@ -266,7 +260,7 @@ body.home header {
     margin-bottom: 0;
 }
 
-body.home .logo {
+body.home .app-icon-logo {
     margin: 0 0 1rem 0;
 }
 
@@ -353,6 +347,18 @@ section:nth-child(even) {
     font-weight: bold;
     font-size: 1.1rem;
     margin-top: 1rem;
+}
+
+.app-store-badge-link {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+}
+
+.app-store-badge {
+    height: 48px;
+    width: auto;
+    display: block;
 }
 
 .signup-form {
@@ -495,7 +501,7 @@ section:nth-child(even) {
         padding: 0 1rem;
     }
 
-    body.home .logo {
+    body.home .app-icon-logo {
         margin: 0 auto 1rem auto;
     }
 
